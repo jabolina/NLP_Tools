@@ -4,6 +4,9 @@ target/
 mvnw
 mvnw.cmd
 
+.mvn
+
+src/main/java/resources
 
 ### STS ###
 .apt_generated

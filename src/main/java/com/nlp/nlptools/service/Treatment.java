@@ -1,4 +1,7 @@
-package com.languagetools.LanguageTools.service;
+package com.nlp.nlptools.service;
+
+import org.tartarus.snowball.SnowballStemmer;
+import org.tartarus.snowball.ext.portugueseStemmer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +13,7 @@ public class Treatment {
 
     public static String characterTreatment(String phrase) {
 
-        Map<Pattern, String> substs = new HashMap<Pattern, String>();
+        Map<Pattern, String> substs = new HashMap<>();
         substs.put(compile("[ÂÃÁÀÄ]"), "A");
         substs.put(compile("[ÉÈÊË]"), "E");
         substs.put(compile("[ÍÌÎÏ]"), "I");
@@ -31,19 +34,32 @@ public class Treatment {
 
     public static String stopwordsPTBR(String phrase) {
 
-        if (phrase.matches("\\bNAO\\b"))
+        if (!phrase.contains("NAO"))
             phrase = phrase.replaceAll("\\bN[AEIOU]*[^AEIOU]*\\b", " ");
-        phrase = phrase.replaceAll("\\bS[AEIOU]*[^AEIOU]*\\b", " ");
+        phrase = phrase.replaceAll("\\bS[AEIOU]{1,2}[^AEIOU]*\\b", " ");
         phrase = phrase.replaceAll("\\bD[AEIOU]*[^AEIOU]*\\b", " ");
         phrase = phrase.replaceAll("\\b(?:PR|P[AEIOU])(?:[AEIOU]|R)[AEIOU]*\\b" , " ");
-        phrase = phrase.replaceAll("\\b[AEIOU]{1,}S*\\b", " ");
+        phrase = phrase.replaceAll("\\bT[AEIOU]+\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]+S*\\b", " ");
         phrase = phrase.replaceAll("\\bU*(?:M|NS)*[AEIOU]*S*\\b", " ");
-        phrase = phrase.replaceAll("\\bC[AEIOU](?:M|N)*\\b", " ");
-        phrase = phrase.replaceAll("\\bK{1,}[AEIOU]*[^AEIOU]*\\b", " ");
+        phrase = phrase.replaceAll("\\bC[AEIOU][MN]*\\b", " ");
+        phrase = phrase.replaceAll("\\bK+[AEIOU]*[^AEIOU]*\\b", " ");
         phrase = phrase.replaceAll("\\bQ[AEIOU]*[^AEIOU]*\\b", " ");
-        phrase = phrase.replaceAll("\\b[^AEIOU]{1,}\\b", " ");
-        phrase = phrase.replaceAll("\\b[AEIOU]{1,}\\b", " ");
+        phrase = phrase.replaceAll("\\b[^AEIOU]+\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]+\\b", " ");
 
         return phrase;
+    }
+
+    public static String stemWord(String phrase) {
+        String stemmed = "";
+
+        SnowballStemmer stemmer = new portugueseStemmer();
+        for(String word: phrase.split(" ")) {
+            stemmer.setCurrent(word);
+            stemmed = stemmed + ' ' + stemmer.getCurrent();
+        }
+
+        return stemmed;
     }
 }

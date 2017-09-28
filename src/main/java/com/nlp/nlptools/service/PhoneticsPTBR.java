@@ -1,4 +1,4 @@
-package com.languagetools.LanguageTools.service;
+package com.nlp.nlptools.service;
 
 public class PhoneticsPTBR {
 
@@ -12,6 +12,7 @@ public class PhoneticsPTBR {
         phrase = phrase.replaceAll("RR", "R");
         phrase = phrase.replaceAll("C([AOU])", "K$1");
         phrase = phrase.replaceAll("QU([AEIO])", "K$1");
+        phrase = phrase.replaceAll("G([EI])", "J$1");
         phrase = phrase.replaceAll("\\bH", "");
 
         return phrase;
