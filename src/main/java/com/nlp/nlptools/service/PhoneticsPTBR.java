@@ -5,7 +5,7 @@ public class PhoneticsPTBR {
     public static String phoneticsPTBR(String phrase) {
 
         phrase = phrase.replaceAll("\\bEX([AEIOU])", " EZ$1");
-        phrase = phrase.replaceAll("(?:\\b?)([AEIOU])S([AEIOU])(?:\\s?)", "$1Z$2");
+        phrase = phrase.replaceAll("([AEIOU])S([AEIOU])", "$1Z$2");
         phrase = phrase.replaceAll("Ç","S");
         phrase = phrase.replaceAll("C([EI])", "S$1");
         phrase = phrase.replaceAll("S{2,}", "S");

@@ -4,9 +4,10 @@ target/
 mvnw
 mvnw.cmd
 
+nlptools.iml
 .mvn
 
-src/main/java/resources
+src/main/java/resources/*
 
 ### STS ###
 .apt_generated

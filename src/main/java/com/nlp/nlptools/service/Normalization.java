@@ -8,14 +8,8 @@ public class Normalization {
     public static String normalize(String phrase) {
 
         phrase = phrase.toUpperCase();
-        return stemWord(
-                characterTreatment(
-                        phoneticsPTBR(
-                                stopwordsPTBR(
-                                        internetesPTBR(phrase)
-                                )
-                        )
-                )
-        );
+
+
+        return characterTreatment(phoneticsPTBR(stopwordsExpPTBR(internetesPTBR(stemWord(phrase)))));
     }
 }

@@ -3,13 +3,32 @@ package com.nlp.nlptools.service;
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.portugueseStemmer;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.compile;
 
 public class Treatment {
+
+    private static List<String> STOPWORDS_LIST = new ArrayList<>(Arrays.asList("a","ainda","alem","ambas","ambos","antes",
+            "ao","aonde","aos","apos","aquele","aqueles",
+            "as","assim","com","como","contra","contudo",
+            "cuja","cujas","cujo","cujos","da","das","de",
+            "dela","dele","deles","demais","depois","desde",
+            "desta","deste","dispoe","dispoem","diversa",
+            "diversas","diversos","do","dos","durante","e",
+            "ela","elas","ele","eles","em","entao","entre",
+            "essa","essas","esse","esses","esta","estas",
+            "este","estes","ha","isso","isto","logo","mais",
+            "mas","mediante","menos","mesma","mesmas","mesmo",
+            "mesmos","na","nas","nas","nem","nesse","neste",
+            "nos","o","os","ou","outra","outras","outro","outros",
+            "pelas","pelas","pelo","pelos","perante","pois","por",
+            "porque","portanto","proprio","propios","quais","qual",
+            "qualquer","quando","quanto","que","quem","quer","se",
+            "seja","sem","sendo","seu","seus","sob","sobre","sua",
+            "suas","tal","tambem","teu","teus","toda","todas","todo",
+            "todos","tua","tuas","tudo","um","uma","umas","uns"));
 
     public static String characterTreatment(String phrase) {
 
@@ -32,7 +51,17 @@ public class Treatment {
         return phrase;
     }
 
-    public static String stopwordsPTBR(String phrase) {
+    public static String stopwordsListPTBR(String phrase) {
+
+        for (String word: phrase.split(" ")) {
+            if (STOPWORDS_LIST.contains(word)) {
+                phrase = phrase.replaceAll(word, " ");
+            }
+        }
+        return phrase;
+    }
+
+    public static String stopwordsExpPTBR(String phrase) {
 
         if (!phrase.contains("NAO"))
             phrase = phrase.replaceAll("\\bN[AEIOU]*[^AEIOU]*\\b", " ");
@@ -47,6 +76,8 @@ public class Treatment {
         phrase = phrase.replaceAll("\\bQ[AEIOU]*[^AEIOU]*\\b", " ");
         phrase = phrase.replaceAll("\\b[^AEIOU]+\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]+H+\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]+F+\\b", " ");
 
         return phrase;
     }
@@ -57,6 +88,7 @@ public class Treatment {
         SnowballStemmer stemmer = new portugueseStemmer();
         for(String word: phrase.split(" ")) {
             stemmer.setCurrent(word);
+            stemmer.stem();
             stemmed = stemmed + ' ' + stemmer.getCurrent();
         }
 
