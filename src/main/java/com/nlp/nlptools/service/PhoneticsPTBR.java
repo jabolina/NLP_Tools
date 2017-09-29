@@ -8,6 +8,7 @@ public class PhoneticsPTBR {
         phrase = phrase.replaceAll("([AEIOU])S([AEIOU])", "$1Z$2");
         phrase = phrase.replaceAll("Ç","S");
         phrase = phrase.replaceAll("C([EI])", "S$1");
+        phrase = phrase.replaceAll("CH", "X");
         phrase = phrase.replaceAll("S{2,}", "S");
         phrase = phrase.replaceAll("RR", "R");
         phrase = phrase.replaceAll("C([AOU])", "K$1");
