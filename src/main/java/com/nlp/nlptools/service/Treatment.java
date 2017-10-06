@@ -25,7 +25,7 @@ public class Treatment {
             phrase = accents.matcher(phrase).replaceAll(noAccent);
         }
 
-        phrase = phrase.replaceAll("[^\\w]", " ");
+        phrase = phrase.replaceAll("[,!?.]", " ");
         phrase = phrase.replaceAll("\\s{2,}", " ");
         phrase = phrase.replace("^\\b(.)", "$1");
 

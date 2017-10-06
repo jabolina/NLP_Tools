@@ -14,6 +14,7 @@ public class PhoneticsPTBR {
         phrase = phrase.replaceAll("C([AOU])", "K$1");
         phrase = phrase.replaceAll("QU([AEIO])", "K$1");
         phrase = phrase.replaceAll("G([EI])", "J$1");
+        phrase = phrase.replaceAll("N([PB])", "M$1");
         phrase = phrase.replaceAll("\\bH", "");
 
         return phrase;
