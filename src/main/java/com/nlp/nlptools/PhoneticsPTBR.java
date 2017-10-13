@@ -1,4 +1,4 @@
-package com.nlp.nlptools.service;
+package com.nlp.nlptools;
 
 public class PhoneticsPTBR {
 

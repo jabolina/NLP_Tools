@@ -1,7 +1,7 @@
-package com.nlp;
+package com.nlp.nlptools;
 
-import static com.nlp.PhoneticsPTBR.*;
-import static com.nlp.Treatment.*;
+import static com.nlp.nlptools.PhoneticsPTBR.*;
+import static com.nlp.nlptools.Treatment.*;
 
 public class Normalization {
 

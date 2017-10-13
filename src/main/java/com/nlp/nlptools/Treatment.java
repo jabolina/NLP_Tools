@@ -1,4 +1,4 @@
-package com.nlp;
+package com.nlp.nlptools;
 
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.portugueseStemmer;
