@@ -9,7 +9,7 @@ public class Normalization {
 
         phrase = phrase.toUpperCase();
 
-        return characterTreatment(phoneticsPTBR(basicStopwordsPTBR(internetesPTBR(stemWord(phrase)))));
-        //return characterTreatment(phoneticsPTBR(stopwordsExpPTBR(internetesPTBR(stemWord(phrase)))));
+        //return characterTreatment(phoneticsPTBR(basicStopwordsPTBR(internetesPTBR(characterTreatment(stemWord(phrase))))));
+        return characterTreatment(phoneticsPTBR(stopwordsExpPTBR(internetesPTBR(stemWord(phrase)))));
     }
 }

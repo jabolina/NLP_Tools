@@ -25,7 +25,7 @@ public class Treatment {
             phrase = accents.matcher(phrase).replaceAll(noAccent);
         }
 
-        phrase = phrase.replaceAll("[,!?.]", " ");
+        phrase = phrase.replaceAll("[,!?&%$*]+", " ");
         phrase = phrase.replaceAll("\\s{2,}", " ");
         phrase = phrase.replace("^\\b(.)", "$1");
 
@@ -48,6 +48,7 @@ public class Treatment {
         phrase = phrase.replaceAll("\\b[^AEIOU]+\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+H+\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+F+\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]\\b", " ");
         phrase = phrase.replaceAll("\\bhttps://(?:\\w*\\W*)*\\b", " ");
 
         return phrase;
@@ -60,6 +61,8 @@ public class Treatment {
         phrase = phrase.replaceAll("\\bH*U+(?:M|NS)*[AEIOU]*S*\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+H+\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+F+\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]\\b", " ");
+        phrase = phrase.replaceAll("\\b[^AEIOU]\\b", " ");
         phrase = phrase.replaceAll("\\bhttps://(?:\\w*\\W*)*\\b", " ");
 
         return phrase;
