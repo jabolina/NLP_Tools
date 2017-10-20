@@ -30,6 +30,7 @@ public class PhoneticsPTBR {
         phrase = phrase.replaceAll("\\bTD\\b", "TUDO");
         phrase = phrase.replaceAll("\\bTB[EM]*", "TAMBEM");
         phrase = phrase.replaceAll("\\bHJ\\b", "HOJE");
+        phrase = phrase.replaceAll("\\bMT[O]\\b", "MUITO");
 
 
         return phrase;

@@ -43,16 +43,15 @@ public class Treatment {
         phrase = phrase.replaceAll("\\bD[AEIOU]*[^AEIOU]*\\b", " ");
         phrase = phrase.replaceAll("\\b(?:PR|P[AEIOU])(?:[AEIOU]|R)[AEIOU]*\\b" , " ");
         phrase = phrase.replaceAll("\\bT[AEIOU]+\\b", " ");
-        phrase = phrase.replaceAll("\\b[AEIOU]+S*\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]+S+\\b", " ");
         phrase = phrase.replaceAll("\\bH*U+(?:M|NS)*[AEIOU]*S*\\b", " ");
         phrase = phrase.replaceAll("\\bC[AEIOU][MN]*\\b", " ");
         phrase = phrase.replaceAll("\\bK+[AEIOU]*[^AEIOU]*\\b", " ");
         phrase = phrase.replaceAll("\\bQ[AEIOU]*[^AEIOU]*\\b", " ");
-        phrase = phrase.replaceAll("\\b[^AEIOU]+\\b", " ");
+        phrase = phrase.replaceAll("\\b[^AEIOU]{3,}\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+H+\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+F+\\b", " ");
-        phrase = phrase.replaceAll("\\b[AEIOU]\\b", " ");
-        phrase = phrase.replaceAll("\\bhttps://(?:\\w*\\W*)*\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]{5,}\\b", " ");
 
         return phrase;
     }
@@ -60,13 +59,12 @@ public class Treatment {
     public static String basicStopwordsPTBR(String phrase) {
 
         phrase = phrase.replaceAll("\\b(?:PR|P[AEIOU])(?:[AEIOU]|R)[AEIOU]*\\b" , " ");
-        phrase = phrase.replaceAll("\\bT[AEIOU]+\\b", " ");
+        phrase = phrase.replaceAll("\\bT[AEIOU]\\b", " ");
         phrase = phrase.replaceAll("\\bH*U+(?:M|NS)*[AEIOU]*S*\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+H+\\b", " ");
         phrase = phrase.replaceAll("\\b[AEIOU]+F+\\b", " ");
-        phrase = phrase.replaceAll("\\b[AEIOU]\\b", " ");
-        phrase = phrase.replaceAll("\\b[^AEIOU]\\b", " ");
-        phrase = phrase.replaceAll("\\bhttps://(?:\\w*\\W*)*\\b", " ");
+        phrase = phrase.replaceAll("\\b[AEIOU]{5,}\\b", " ");
+        phrase = phrase.replaceAll("\\b[^AEIOU]{3,}\\b", " ");
 
         return phrase;
     }
